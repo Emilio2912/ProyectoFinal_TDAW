@@ -868,7 +868,7 @@
                 </a>
                 </li>
 
-                <li><a href="/aspirantes" class="" aria-expanded="false">
+                <li><a href="/administrador" class="" aria-expanded="false">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M16.0754 2H19.4614C20.8636 2 21.9999 3.14585 21.9999 4.55996V7.97452C21.9999 9.38864 20.8636 10.5345 19.4614 10.5345H16.0754C14.6731 10.5345 13.5369 9.38864 13.5369 7.97452V4.55996C13.5369 3.14585 14.6731 2 16.0754 2Z" fill="#763ed0"/>
@@ -890,7 +890,7 @@
                 </a>
                 </li>
 
-                <li><a href="/carreras" class="" aria-expanded="false">
+                <li><a href="/administrador" class="" aria-expanded="false">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M16.0754 2H19.4614C20.8636 2 21.9999 3.14585 21.9999 4.55996V7.97452C21.9999 9.38864 20.8636 10.5345 19.4614 10.5345H16.0754C14.6731 10.5345 13.5369 9.38864 13.5369 7.97452V4.55996C13.5369 3.14585 14.6731 2 16.0754 2Z" fill="#763ed0"/>
@@ -901,16 +901,18 @@
                 </a>
                 </li>
 
-                <li><a href="/" class="" aria-expanded="false">
-                    <div class="menu-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.4" d="M16.0754 2H19.4614C20.8636 2 21.9999 3.14585 21.9999 4.55996V7.97452C21.9999 9.38864 20.8636 10.5345 19.4614 10.5345H16.0754C14.6731 10.5345 13.5369 9.38864 13.5369 7.97452V4.55996C13.5369 3.14585 14.6731 2 16.0754 2Z" fill="#763ed0"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z" fill="#B9A8FF"/>
-                        </svg>
-                    </div>
-                    <span class="nav-text">Salir</span>
-                </a>
+                <li>
+                    <a href="/logout" aria-expanded="false">
+                        <div class="menu-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.4" d="..." fill="#763ed0"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#B9A8FF"/>
+                            </svg>
+                        </div>
+                        <span class="nav-text">Salir</span>
+                    </a>
                 </li>
+
 
             </ul>
 
@@ -937,38 +939,54 @@
                 </ol>
             </div>
             <!-- row -->
-            <div class="row">
-                <div class="col-xl-6 col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Inicio de sesión</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <form>
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">Usuario:</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" class="form-control" placeholder="Usuario:">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">Contraseña:</label>
-                                        <div class="col-sm-9">
-                                            <input type="password" class="form-control" placeholder="Contraseña:">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-10">
-                                            <a href="/carreras" class="btn btn-default">Ingresar</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+            <div class="card p-4">
+                <h3 class="text-center mb-4">Inicio de Sesión</h3>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="admin@upiiz.com" required>
                 </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Ingresar</button>
+                </div>
+
+
+
+                <div id="mensaje" class="text-danger text-center fw-bold"></div>
             </div>
+
+            <script>
+                function iniciarSesion() {
+                    const email = document.getElementById("email").value.trim();
+                    const password = document.getElementById("password").value.trim();
+                    const mensaje = document.getElementById("mensaje");
+
+                    fetch("/api/login", {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                window.location.href = "/aspirantes";
+                            } else {
+                                mensaje.textContent = data.message || "Credenciales incorrectas.";
+                            }
+                        })
+                        .catch(() => {
+                            mensaje.textContent = "Error al conectar con el servidor.";
+                        });
+                }
+            </script>
+
+
             <!--**********************************
                 Footer start
             ***********************************-->
@@ -1038,6 +1056,22 @@
 
 
 
+
+
+
+
+
+
+<script>
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = this.getAttribute('href');
+            if (window.location.pathname === target) {
+                e.preventDefault(); // previene recarga si ya estamos en esa ruta
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
