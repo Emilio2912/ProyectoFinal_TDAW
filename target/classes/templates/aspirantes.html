@@ -938,8 +938,8 @@
 
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Aspirantes</a></li>
                 </ol>
             </div>
             <!-- row -->
@@ -949,9 +949,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Listado de Aspirantes</h4>
-                        <button type="button" class="btn btn-primary  mb-2" data-bs-toggle="modal" data-bs-target="#basicModa">Correo masivo</button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="basicModa">
+                        <!-- Boton de Correo Masivo-->
+                        <button type="button" class="btn btn-primary  mb-2" data-bs-toggle="modal" data-bs-target="#ModalCorreoMasivo">Correo masivo</button>
+
+                        <!-- Modal Correo Masivo -->
+                        <div class="modal fade" id="ModalCorreoMasivo">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -984,10 +986,105 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal Correo individual -->
+                        <div class="modal fade" id="mensaje">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Correo a: </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body"><div class="card-body">
+                                        <div class="basic-form">
+                                            <form>
+
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Asunto</label>
+                                                        <input type="text" class="form-control" placeholder="Indique asunto">
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Mensaje</label>
+                                                        <input type="text" class="form-control" placeholder="Escriba mensaje">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-waring btn-sm">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal de detalle aspirante -->
+                        <div class="modal fade" id="modalAspirante" tabindex="-1" aria-labelledby="modalAspiranteLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Aspirante:</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label>Nombre</label>
+                                                <input id="nombre_aspirante" class="form-control" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Teléfono</label>
+                                                <input id="telefono_aspirante" class="form-control" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Email</label>
+                                                <input id="email_aspirante" class="form-control" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Carrera</label>
+                                                <input id="carrera_aspirante" class="form-control" readonly>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Constancia -->
+                        <div class="modal fade" id="constancia">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Aspirante: </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body"><div class="card-body">
+                                        <div class="basic-form">
+                                            <form>
+                                                <div class="row">
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary btn-sm">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example3" class="display" style="min-width: 845px">
+                            <!--Tabla de Aspirantes -->
+                            <table id="tablaAspirantes" class="display" style="min-width: 845px">
                                 <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -996,679 +1093,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <!--
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
                                     <td>
                                         <div class="d-flex">
+                                             Boton de mensaje individual
                                             <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                             Boton de informacion individual
                                             <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                             Boton de Constancia
                                             <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-rounded btn-warning me-2"data-bs-toggle="modal" data-bs-target="#mensaje">Mensaje</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="mensaje">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Correo a: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Asunto</label>
-                                                                            <input type="text" class="form-control" placeholder="Indique asunto">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Mensaje</label>
-                                                                            <input type="text" class="form-control" placeholder="Escriba mensaje">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-waring btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-info me-2"data-bs-toggle="modal" data-bs-target="#informacion">Información</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="informacion">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante:</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Teléfono</label>
-                                                                            <input type="text" class="form-control" placeholder="Teléfono">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Email</label>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Carrera</label>
-                                                                            <input type="text" class="form-control" placeholder="Carrera">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light light btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-rounded btn-light me-2"data-bs-toggle="modal" data-bs-target="#constancia">Constancia</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="constancia">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Aspirante: </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                -->
                                 </tbody>
+                                <tfoot>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Acciones</th>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -1736,6 +1180,10 @@
         Scripts
     ***********************************-->
 <!-- Required vendors -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="/js/Aspirantes/tablaAspirantes.js"></script>
+
 <script src="vendor/global/global.min.js"></script>
 <script src="vendor/chart.js/Chart.bundle.min.js"></script>
 <!-- Apex Chart -->
