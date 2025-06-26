@@ -863,7 +863,7 @@
         <div class="dlabnav-scroll">
 
             <ul class="metismenu" id="menu">
-                <li><a href="/registro" class="" aria-expanded="false">
+                <li><a href="/" class="" aria-expanded="false">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M16.0754 2H19.4614C20.8636 2 21.9999 3.14585 21.9999 4.55996V7.97452C21.9999 9.38864 20.8636 10.5345 19.4614 10.5345H16.0754C14.6731 10.5345 13.5369 9.38864 13.5369 7.97452V4.55996C13.5369 3.14585 14.6731 2 16.0754 2Z" fill="#763ed0"/>
@@ -907,16 +907,16 @@
                 </a>
                 </li>
 
-                <li>
-                    <form id="logoutForm" action="/logout" method="POST" style="display:none;"></form>
-                    <a href="#" onclick="document.getElementById('logoutForm').submit(); return false;" class="" aria-expanded="false">
-                        <div class="menu-icon">
-                            <!-- SVG aquí -->
-                        </div>
-                        <span class="nav-text">Salir</span>
-                    </a>
+                <li><a href="/administrador" class="" aria-expanded="false">
+                    <div class="menu-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M16.0754 2H19.4614C20.8636 2 21.9999 3.14585 21.9999 4.55996V7.97452C21.9999 9.38864 20.8636 10.5345 19.4614 10.5345H16.0754C14.6731 10.5345 13.5369 9.38864 13.5369 7.97452V4.55996C13.5369 3.14585 14.6731 2 16.0754 2Z" fill="#763ed0"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z" fill="#B9A8FF"/>
+                        </svg>
+                    </div>
+                    <span class="nav-text">Salir</span>
+                </a>
                 </li>
-
 
             </ul>
 
@@ -938,8 +938,8 @@
 
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Carreras</a></li>
                 </ol>
             </div>
             <!-- row -->
@@ -949,9 +949,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Mantenimiento de Carreras</h4>
-                        <button type="button" class="btn btn-primary  mb-2" data-bs-toggle="modal" data-bs-target="#basicModa">Nueva</button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="basicModa">
+                        <!-- Boton de Nueva carrera-->
+                        <button type="button" class="btn btn-primary  mb-2" data-bs-toggle="modal" data-bs-target="#modalCrud_nueva">Nueva Carrera</button>
+
+                        <!-- Modal Nueva Carrera-->
+                        <div class="modal fade" id="modalCrud_nueva">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -966,15 +968,15 @@
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label">Nombre</label>
-                                                        <input type="text" class="form-control" placeholder="Nombre">
+                                                        <input id="nombre_carrera" type="text" class="form-control" placeholder="Nombre">
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label">Semestres</label>
-                                                        <input type="number" class="form-control" placeholder="Semestres">
+                                                        <input id="semestre_carrera" type="number" class="form-control" placeholder="Semestres">
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label">Observaciones</label>
-                                                        <input type="text" class="form-control" Observaciones="Email">
+                                                        <input id="observacion_carrera" type="text" class="form-control" placeholder="Observaciones">
                                                     </div>
                                                 </div>
                                             </form>
@@ -983,7 +985,64 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="guardarCarrera();">Guardar Carrera</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Editar Carrera-->
+                        <div class="modal fade" id="modalCrud_editar">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Editar Carrera</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body"><div class="card-body">
+                                        <div class="basic-form">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Nombre</label>
+                                                        <input id="nombre_carrera_editar" type="text" class="form-control" placeholder="Nombre">
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Semestre</label>
+                                                        <input id="semestre_carrera_editar" type="number" class="form-control" placeholder="Semestre">
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Observaciones</label>
+                                                        <input id="observacion_carrera_editar" type="text" class="form-control" placeholder="Observaciones">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="actualizarCarrera();">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Eliminar Carrera -->
+                        <div class="modal fade" id="modalCrud_eliminar">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Eliminar Carrera</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="basic-form">
+                                            <p>Quieres eliminar la carrera: <span id="nombre_carrera_eliminar"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarCarrera();">Eliminar</button>
                                     </div>
                                 </div>
                             </div>
@@ -991,406 +1050,38 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example3" class="display" style="min-width: 845px">
+                            <!-- Tabla de carreras -->
+                            <table id="tablaCarreras" class="display" style="min-width: 845px">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Semestre</th>
+                                    <th>Semestres</th>
+                                    <th>Observaciones</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <!-- CONTENIDO DE LA TABLA
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
                                     <td>
                                         <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            Boton de editar
+                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#modalCrud_editar">Editar</button>
+                                            Boton de Eliminar Carrera
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalCrud_eliminar">Eliminar</button>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Architect</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#editarca">Editar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Editar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="card-body">
-                                                            <div class="basic-form">
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" class="form-control" placeholder="Nombre">
-                                                                        </div>
-                                                                        <div class="mb-3 col-md-6">
-                                                                            <label class="form-label">Semestres</label>
-                                                                            <input type="number" class="form-control" placeholder="Semestres">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Observaciones</label>
-                                                                            <input type="text" class="form-control" Observaciones="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarca">Eliminar</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="eliminarca">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Eliminar Carrera</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body"><div class="modal-body">¿Está seguro de eliminar la carrera de  ?</div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                -->
                                 </tbody>
+                                <tfoot>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Semestres</th>
+                                    <th>Observaciones</th>
+                                    <th>Acciones</th>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -1458,6 +1149,10 @@
         Scripts
     ***********************************-->
 <!-- Required vendors -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="/js/Carreras/tablaCarreras.js"></script>
+
 <script src="vendor/global/global.min.js"></script>
 <script src="vendor/chart.js/Chart.bundle.min.js"></script>
 <!-- Apex Chart -->
