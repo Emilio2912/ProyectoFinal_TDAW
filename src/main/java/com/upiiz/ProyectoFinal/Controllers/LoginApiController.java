@@ -23,7 +23,7 @@
             Map<String, Object> resp = new HashMap<>();
 
             // Aquí va la lógica real de validación (BD, servicios, etc.)
-            if ("admin@upiiz.com".equals(email) && "1234".equals(password)) {
+            if ("equipo5tdwadm@gmail.com".equals(email) && "equipo5adm%".equals(password)) {
                 session.setAttribute("usuario", email);
                 resp.put("success", true);
                 return ResponseEntity.ok(resp);
