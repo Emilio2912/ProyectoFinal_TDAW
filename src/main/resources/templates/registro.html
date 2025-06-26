@@ -1037,29 +1037,25 @@
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
+                                    <!-- ...existing code... -->
                                     <form action="/registro" method="post">
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Nombre:</label>
-                                                <input type="text" class="form-control" name="nombre"
+                                                <input type="text" class="form-control" name="nombreAspirante"
                                                     placeholder="Nombre:" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{2,50}"
                                                     title="Solo letras y espacios (2-50 caracteres)" required>
                                             </div>
                                             <div class="mb-3 col-md-6">
-                                                <label class="form-label">Apellido</label>
-                                                <input type="text" class="form-control" name="apellido"
-                                                    placeholder="Apellido" required>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
                                                 <label class="form-label">Teléfono</label>
-                                                <input type="tel" class="form-control" name="telefono"
+                                                <input type="tel" class="form-control" name="telefonoAspirante"
                                                     placeholder="Teléfono" pattern="[0-9]{10}"
                                                     title="10 dígitos numéricos" required>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label" for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email"
-                                                    placeholder="Correo electrónico" required>
+                                                <input type="email" class="form-control" id="email"
+                                                    name="emailAspirante" placeholder="Correo electrónico" required>
                                                 <div id="email-error" style="display:none; color:red;"></div>
                                             </div>
                                         </div>
@@ -1067,11 +1063,11 @@
                                             <div class="mb-3 col-md-7">
                                                 <label class="form-label">Seleccione una carrera</label>
                                                 <select id="inputState" class="default-select form-control wide"
-                                                    name="carrera" required>
+                                                    name="carreraId" required>
                                                     <option value="" selected disabled>Seleccione una opción</option>
-                                                    <option value="Sistemas">Sistemas Computacionales</option>
-                                                    <option value="Mecatronica">Mecatrónica</option>
-                                                    <option value="IA">Inteligencia Artificial</option>
+                                                    <option value="1">Sistemas Computacionales</option>
+                                                    <option value="2">Mecatrónica</option>
+                                                    <option value="3">Inteligencia Artificial</option>
                                                 </select>
                                             </div>
                                         </div>
