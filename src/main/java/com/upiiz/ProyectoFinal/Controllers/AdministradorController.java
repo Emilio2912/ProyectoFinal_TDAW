@@ -17,20 +17,20 @@ public class    AdministradorController {
             // Si no hay sesión, redirigir al login
             return "redirect:/login";
         }
-        return "administrador"; // Renderiza administrador.html
+        return "administrador";
     }
 
     // Página de login (accesible públicamente)
     @GetMapping("/login")
     public String login() {
-        return "administrador"; // Renderiza login.html
+        return "administrador";
     }
 
     // Cierre de sesión
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";  // redirige a la página de login después de cerrar sesión
+        return "redirect:/login";
     }
 
 
