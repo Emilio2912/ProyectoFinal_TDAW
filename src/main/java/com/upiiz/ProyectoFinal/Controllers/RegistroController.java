@@ -25,22 +25,24 @@ public class RegistroController {
         return "registro";
     }
 
-   @PostMapping
-public String guardarAspirante(
-    @RequestParam String nombre,
-    @RequestParam String apellido,
-    @RequestParam String email,
-    @RequestParam(required = false) String telefono,
-    @RequestParam(required = false) String carrera
-){
-        String sql = "INSERT INTO aspirantes (nombre, apellido, email) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, nombre, apellido, email);
+    @PostMapping
+    public String guardarAspirante(
+        @RequestParam String nombreAspirante,
+        @RequestParam String telefonoAspirante,
+        @RequestParam String emailAspirante,
+        @RequestParam Integer carreraId
+    ){
+        String sql = "INSERT INTO aspirantes (nombreAspirante, telefonoAspirante, emailAspirante, carreraId) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, nombreAspirante, telefonoAspirante, emailAspirante, carreraId);
 
         // Enviar correo al admin
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("jesusad250@gmail.com"); 
         message.setSubject("Nuevo registro de aspirante");
-        message.setText("Se ha registrado un nuevo aspirante:\nNombre: " + nombre + " " + apellido + "\nEmail: " + email);
+        message.setText("Se ha registrado un nuevo aspirante:\nNombre: " + nombreAspirante +
+                        "\nTeléfono: " + telefonoAspirante +
+                        "\nEmail: " + emailAspirante +
+                        "\nCarrera ID: " + carreraId);
         mailSender.send(message);
 
         return "redirect:/registro?exito";
@@ -58,8 +60,12 @@ public String guardarAspirante(
     }
 
     private boolean existeEmail(String email) {
-        String sql = "SELECT COUNT(*) FROM aspirantes WHERE email = ?";
-        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email);
-        return count != null && count > 0;
-    }
+    String sql = "SELECT COUNT(*) FROM aspirantes WHERE emailAspirante = ?";
+    Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email);
+    return count != null && count > 0;
 }
+}
+
+
+
+
