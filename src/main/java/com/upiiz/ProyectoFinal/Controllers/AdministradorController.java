@@ -1,8 +1,10 @@
 package com.upiiz.ProyectoFinal.Controllers;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class    AdministradorController {
@@ -25,11 +27,13 @@ public class    AdministradorController {
     }
 
     // Cierre de sesión
-    @GetMapping("/logout")
-    public String cerrarSesion(HttpSession session) {
-        session.invalidate(); //  Cierra la sesión
-        return "redirect:/administrador"; // Te redirige al login
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";  // redirige a la página de login después de cerrar sesión
     }
+
+
 
 }
 
