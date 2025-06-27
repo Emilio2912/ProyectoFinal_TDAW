@@ -35,9 +35,8 @@ public class RegistroController {
         String sql = "INSERT INTO aspirantes (nombreAspirante, telefonoAspirante, emailAspirante, carreraId) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, nombreAspirante, telefonoAspirante, emailAspirante, carreraId);
 
-        // Enviar correo al admin
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("jesusad250@gmail.com"); 
+        message.setTo("equipo5tdwadm@gmail.com"); 
         message.setSubject("Nuevo registro de aspirante");
         message.setText("Se ha registrado un nuevo aspirante:\nNombre: " + nombreAspirante +
                         "\nTeléfono: " + telefonoAspirante +
@@ -65,7 +64,4 @@ public class RegistroController {
     return count != null && count > 0;
 }
 }
-
-
-
 
