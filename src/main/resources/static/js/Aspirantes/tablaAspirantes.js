@@ -103,81 +103,95 @@ function generarConstanciaPDF(aspirante) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const fecha = new Date().toLocaleDateString('es-MX', {
+    // Configuración inicial
+    doc.setFont("helvetica");
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0); // Texto negro
+
+    // Margen izquierdo para todo el documento
+    const marginLeft = 20;
+    let yPosition = 30; // Posición vertical inicial
+
+    // Logo del IPN (deberías reemplazar esto con tu imagen real)
+    // doc.addImage(logoIPN, 'PNG', marginLeft, 15, 30, 30);
+
+    // Encabezado
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("INSTITUTO POLITÉCNICO NACIONAL", 105, yPosition, { align: "center" });
+    yPosition += 10;
+
+    doc.setFontSize(12);
+    doc.text("DIRECCIÓN DE EDUCACIÓN CONTINUA", 105, yPosition, { align: "center" });
+    yPosition += 20;
+
+    // Título de la constancia
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("CONSTANCIA", 105, yPosition, { align: "center" });
+    yPosition += 20;
+
+    // Texto "A QUIEN CORRESPONDA:"
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("A QUIEN CORRESPONDA:", marginLeft, yPosition);
+    yPosition += 15;
+
+    // Cuerpo de la constancia
+    const textoConstancia = [
+        "Por medio de la presente se hace constar que:",
+        `${aspirante.nombreAspirante}`,
+        `con número de matrícula 2024670185, se encuentra inscrito en el Curso de`,
+        "Preparación para el Ingreso al Nivel Superior del Instituto Politécnico Nacional (IPN).",
+        "",
+        "El curso tiene como objetivo brindar a los alumnos las herramientas y conocimientos",
+        "necesarios para enfrentar con éxito el examen de admisión al nivel superior de nuestra",
+        "institución. La duración del curso es de 6 meses y se desarrolla en las",
+        "instalaciones de la Unidad Profesional Interdisciplinaria de Ingeniería.",
+        "",
+
+        "",
+        "Para cualquier información adicional, favor de comunicarse a nuestras oficinas o al",
+        `${aspirante.telefonoAspirante}`,
+        "",
+        "Sin más por el momento, quedo a sus órdenes."
+    ];
+
+    // Agregar cada línea del texto
+    textoConstancia.forEach(linea => {
+        if (linea === "") {
+            yPosition += 5; // Espacio entre párrafos
+        } else {
+            doc.text(linea, marginLeft, yPosition);
+            yPosition += 7;
+        }
+    });
+
+    yPosition += 15;
+
+    // Firma
+    doc.text("Atentamente,", marginLeft, yPosition);
+    yPosition += 20;
+
+    doc.text("_________________________", marginLeft, yPosition);
+    yPosition += 7;
+    doc.text("Efrain Arredonodo Morales", marginLeft, yPosition);
+    yPosition += 7;
+    doc.text("Director del Curso", marginLeft, yPosition);
+    yPosition += 7;
+    doc.text("Unidad de Educación Continua", marginLeft, yPosition);
+    yPosition += 7;
+    doc.text("Instituto Politécnico Nacional", marginLeft, yPosition);
+    yPosition += 15;
+
+    // Fecha de emisión
+    const fechaEmision = new Date().toLocaleDateString('es-MX', {
         day: '2-digit',
         month: 'long',
         year: 'numeric'
     });
+    doc.text(`Fecha de emisión: ${fechaEmision}`, marginLeft, yPosition);
 
-    // Configuración inicial
-    doc.setFont("helvetica");
-    doc.setFontSize(12);
-
-    // Encabezado con fondo de color
-    doc.setFillColor(44, 62, 80); // Azul oscuro
-    doc.rect(0, 0, 210, 30, 'F');
-
-    // Título
-    // Encabezado con fondo guinda
-    doc.setFillColor(128, 0, 32); // Color guinda (RGB)
-    doc.rect(0, 0, 210, 30, 'F'); // Fondo rectangular
-
-// Título en blanco sobre fondo guinda
-    doc.setFontSize(18);
-    doc.setTextColor(255, 255, 255); // Texto blanco
-    doc.text("CONSTANCIA DE REGISTRO", 105, 20, null, null, "center");
-
-    // Logo institucional (simulado)
-    // doc.addImage(logoData, 'PNG', 160, 35, 30, 30);
-
-    // Cuerpo del documento
-    doc.setFontSize(12);
-    doc.setTextColor(60, 60, 60);
-    doc.text("Se hace constar que:", 20, 50);
-
-    // Tabla con la información
-    const datos = [
-        ["Nombre del aspirante:", aspirante.nombreAspirante],
-        ["Correo electrónico:", aspirante.emailAspirante],
-        ["Teléfono:", aspirante.telefonoAspirante],
-        ["Carrera seleccionada:", aspirante.nombreCarrera],
-        ["Fecha de registro:", fecha]
-    ];
-
-    let y = 70;
-    datos.forEach(([etiqueta, valor]) => {
-        doc.setFont("helvetica", "bold");
-        doc.text(etiqueta, 25, y);
-        doc.setFont("helvetica", "normal");
-        doc.text(valor, 70, y);
-        y += 10;
-    });
-
-    // Separador decorativo
-    doc.setDrawColor(200, 200, 200);
-    doc.line(20, y + 15, 190, y + 15);
-
-    // Pie de página
-    doc.setFontSize(10);
-    doc.setTextColor(150, 150, 150);
-    doc.text("ATTE: EL DIRE", 105, y + 25, null, null, "center");
-
-
-    doc.setFontSize(12);
-    doc.setTextColor(80, 80, 80);
-    doc.text("Atentamente", 160, y + 40);  // Texto "Atentamente"
-    doc.setFontSize(10);
-    doc.text("_________________________", 150, y + 50);  // Línea de firma (espacio amplio)
-    doc.text("Responsable de Admisiones", 150, y + 60);  // Cargo (más abajo)
-
-
-
-    // Sello de agua (opcional)
-    doc.setFontSize(60);
-    doc.setTextColor(230, 230, 230);
-    doc.setGState(new doc.GState({ opacity: 0.2 }));
-    doc.text("VÁLIDO", 105, 150, null, null, "center");
-    doc.setGState(new doc.GState({ opacity: 1 }));
-
-    doc.save(`Constancia_${aspirante.nombreAspirante.replace(/ /g, "_")}.pdf`);
+    // Guardar el PDF
+    doc.save(`Constancia_IPN_${aspirante.nombreAspirante.replace(/ /g, "_")}.pdf`);
 }
